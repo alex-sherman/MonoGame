@@ -66,23 +66,6 @@ namespace Microsoft.Xna.Framework.Windows
                         m.Result = new IntPtr(flags);
                         return;
                     }
-#if (WINDOWS && DIRECTX)
-                case WM_KEYDOWN:
-                    switch (m.WParam.ToInt32())
-                    {
-                        case 0x5B:  // Left Windows Key
-
-                            if (this.WindowState == FormWindowState.Maximized)
-                            {
-                                this.WindowState = FormWindowState.Minimized;
-                            }
- 		 
-                            break;
-                        case 0x5C: // Right Windows Key
-                            goto case 0x5B;
-                    }
-                    break;
-#endif
                 case WM_SYSCOMMAND:
 
                     var wParam = m.WParam.ToInt32();
