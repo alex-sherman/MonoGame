@@ -121,7 +121,8 @@ namespace MonoGame.Framework
         internal override void OnPresentationChanged()
         {
             var pp = Game.GraphicsDevice.PresentationParameters;
-            _window.ChangeClientSize(new Size(pp.BackBufferWidth, pp.BackBufferHeight));
+            if(_window.ClientBounds.Width != pp.BackBufferWidth || _window.ClientBounds.Height != pp.BackBufferHeight)
+                _window.ChangeClientSize(new Size(pp.BackBufferWidth, pp.BackBufferHeight));
 
             if (Game.GraphicsDevice.PresentationParameters.IsFullScreen && !InFullScreenMode)
             {
